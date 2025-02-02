@@ -1,0 +1,135 @@
+/* Modal Background */
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Increased opacity for a darker background */
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's always on top */
+  }
+  
+  /* Modal Container */
+  .modalContainer {
+    width: 500px;
+    height: auto;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    animation: fadeIn 0.3s ease-in-out; /* Add a subtle fade-in effect */
+  }
+  
+  /* Title */
+  .title {
+    font-size: 1.5rem;
+    color: #333; /* Darker color for better contrast */
+    margin-bottom: 15px;
+  }
+  
+  /* Close Button */
+  .titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem; /* Increased size for better visibility */
+    cursor: pointer;
+    color: #666; /* Softer color */
+    transition: color 0.3s ease;
+  }
+  
+  .titleCloseBtn button:hover {
+    color: #000; /* Darken color on hover */
+  }
+  
+  /* Modal Body */
+  .modalContainer .body {
+    flex: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem; /* Slightly smaller for better text balance */
+    text-align: center;
+    color: #555; /* Softer color for readability */
+    margin-bottom: 20px;
+  }
+  
+  /* Modal Footer */
+  .modalContainer .footer {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Footer Buttons */
+  .modalContainer .footer button {
+    width: 120px;
+    height: 40px;
+    margin: 10px;
+    border: none;
+    background-color: #6495ed; /* Changed to a more modern blue */
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: rgba(100, 149, 237, 0.3) 0 4px 12px; /* Soft shadow */
+  }
+  
+  .modalContainer .footer button:hover {
+    background-color: #4169e1; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: rgba(65, 105, 225, 0.5) 0 6px 16px;
+  }
+  
+  /* Cancel Button */
+  #cancelBtn {
+    background-color: #dc143c; /* Crimson red */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  #cancelBtn:hover {
+    background-color: #a50f2c; /* Darker red on hover */
+    transform: translateY(-2px);
+    box-shadow: rgba(220, 20, 60, 0.5) 0 6px 16px;
+  }
+  
+  /* Address Input */
+  .address {
+    display: block;
+    margin: 10px auto;
+    height: 40px;
+    width: 80%;
+    padding: 8px;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .address:focus {
+    background-color: #e0f7fa; /* Light blue focus background */
+    border-color: #6495ed; /* Blue border on focus */
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

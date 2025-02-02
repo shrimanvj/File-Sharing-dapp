@@ -1,0 +1,77 @@
+/* Image List Grid */
+.image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px; /* Increased gap for better spacing */
+    grid-auto-rows: 350px;
+    margin: 20px; /* Increased margin for better separation */
+  }
+  
+  /* Image Styling */
+  .image-list img {
+    width: 100%; /* Make images responsive within their grid item */
+    height: 100%; /* Ensure images fill the grid item */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire area */
+    border-radius: 10px; /* Add rounded corners for a modern look */
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px; /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+  }
+  
+  .image-list img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 16px; /* Enhance shadow on hover */
+  }
+  
+  /* Centered Container */
+  .center {
+    margin: 40px auto; /* Center the margin automatically */
+    text-align: center; /* Center content within this container */
+  }
+  
+  /* Button Styling */
+  .button {
+    background-image: linear-gradient(-180deg, #009ffd, #2a2a72); /* Gradient blue */
+    border-radius: 8px; /* Slightly more rounded corners */
+    color: #ffffff;
+    padding: 10px 20px; /* Increased padding for better size */
+    border: none;
+    font-size: 16px;
+    font-weight: bold; /* Make text bold for emphasis */
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: rgba(0, 159, 253, 0.3) 0 4px 12px; /* Soft shadow */
+  }
+  
+  .button:hover {
+    box-shadow: rgba(0, 159, 253, 0.5) 0 6px 16px; /* Increase shadow on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+  }
+  
+  /* Address Input */
+  .address {
+    display: block;
+    margin: 20px auto; /* Add vertical margin for better spacing */
+    height: 40px; /* Increase height for better usability */
+    width: 80%; /* Make width responsive */
+    max-width: 350px; /* Set a maximum width */
+    padding: 8px 12px; /* Add padding for better text spacing */
+    font-size: 16px; /* Increase font size */
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  }
+  
+  .address:focus {
+    background-color: #e0f7fa; /* Light blue focus background */
+    border-color: #009ffd; /* Blue border on focus */
+  }
+  
+  /* Input Text Focus */
+  input[type="text"]:focus {
+    background-color: #e0f7fa; /* Unified focus color */
+    border-color: #009ffd; /* Unified focus border */
+    outline: none; /* Remove default outline */
+  }
+  
