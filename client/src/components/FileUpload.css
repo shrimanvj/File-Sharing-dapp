@@ -1,0 +1,75 @@
+/* General Div Styling */
+div {
+    padding: 5px 10px;
+  }
+  
+  /* Top Container */
+  .top {
+    margin: 40px;
+  }
+  
+  /* File Input Styling */
+  input[type="file"] {
+    display: none;
+  }
+  
+  /* Choose Button Styling */
+  .choose {
+    background-color: #28a745; /* A vibrant green */
+    background-image: linear-gradient(-180deg, #5aff15, #00b712);
+    border-radius: 6px;
+    color: #1d1b1b;
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: rgba(0, 128, 0, 0.3) 0 4px 12px;
+  }
+  
+  .choose:hover {
+    border: 1px solid #4e0e8e;
+    background-color: #1f623a;
+    box-shadow: rgba(123, 227, 123, 0.5) 0 6px 16px;
+    transform: translateY(-2px);
+  }
+  
+  /* Text Area Styling */
+  .textArea {
+    color: #d4d4de; /* Change to a dark gray for better readability */
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  /* Upload Button Styling */
+  .upload {
+    border: 1px solid #3d025c;
+    background-color: #5a006c;
+    color: #eee7ed;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-left: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: rgba(19, 170, 82, 0.3) 0 4px 12px;
+  }
+  
+  .upload:hover {
+    border: 1px solid #4e0e8e;
+    background-color: #2f0224; /* Darker green on hover */
+    color: #e6e5e5;
+    box-shadow: rgba(170, 19, 163, 0.5) 0 6px 16px;
+    transform: translateY(-2px);
+  }
+  
+  /* Disabled Upload Button Styling */
+  .upload:disabled,
+  .upload[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
