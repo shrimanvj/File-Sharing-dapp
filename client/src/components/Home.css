@@ -1,0 +1,94 @@
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 20px;
+}
+
+.home-content {
+  max-width: 800px;
+  text-align: center;
+  color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.home-content h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #00f2fe 0%, #4facfe 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #e0e0e0;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.feature {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature h3 {
+  color: #4facfe;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  color: #e0e0e0;
+  font-size: 0.9em;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.auth-button {
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1.1em;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.auth-button.login {
+  background: linear-gradient(45deg, #00f2fe 0%, #4facfe 100%);
+  color: white;
+}
+
+.auth-button.signup {
+  background: transparent;
+  border: 2px solid #4facfe;
+  color: #4facfe;
+}

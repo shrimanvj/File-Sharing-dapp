@@ -1,23 +1,58 @@
-import Upload from "./artifacts/contracts/Upload.sol/Upload.json";
-import { useState, useEffect } from "react";
-import { ethers } from "ethers";
-import FileUpload from "./components/FileUpload";
-import Display from "./components/Display";
-import Modal from "./components/Modal";
-import { BrowserProvider } from "ethers";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { ethers } from 'ethers';
+import Upload from './artifacts/contracts/Upload.sol/Upload.json';
+import FileUpload from './components/FileUpload';
+import Display from './components/Display';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
+import Home from './components/Home';
 import "./App.css";
+
+function Dashboard({ account, contract, provider }) {
+  if (!account) {
+    return <Navigate to="/login" />;
+  }
+
+  return (
+    <div className="App">
+      <h1>Decentralized File Sharing</h1>
+      <div className="bg"></div>
+      <div className="bg bg2"></div>
+      <div className="bg bg3"></div>
+
+      <p className="account-info">
+        Account: {account ? account : "Not connected"}
+      </p>
+      
+      <FileUpload
+        account={account}
+        provider={provider}
+        contract={contract}
+      />
+      <Display 
+        contract={contract} 
+        account={account}
+      />
+    </div>
+  );
+}
 
 function App() {
   const [account, setAccount] = useState("");
   const [contract, setContract] = useState(null);
   const [provider, setProvider] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    const provider = new BrowserProvider(window.ethereum);
+    const initProvider = async () => {
+      if (!window.ethereum) {
+        console.error("Metamask is not installed");
+        return;
+      }
 
-    const loadProvider = async () => {
-      if (provider) {
+      try {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        
         window.ethereum.on("chainChanged", () => {
           window.location.reload();
         });
@@ -26,55 +61,46 @@ function App() {
           window.location.reload();
         });
 
-        await provider.send("eth_requestAccounts", []); // This requests account access
-        const signer = await provider.getSigner(); // Wait for the signer to be ready
-        const address = await signer.address;
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const signer = await provider.getSigner();
+        const address = await signer.getAddress();
         setAccount(address);
-
-        let contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; // The contract address
-
-        const contract = new ethers.Contract(contractAddress, Upload.abi, signer);
-        setContract(contract); // Store the contract in state
-        setProvider(provider); // Store provider in state
-      } else {
-        console.error("Metamask is not installed"); // Handle case where MetaMask isn't available
+        
+        const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+        const contract = new ethers.Contract(
+          contractAddress,
+          Upload.abi,
+          signer
+        );
+        
+        setContract(contract);
+        setProvider(provider);
+      } catch (error) {
+        console.error("Failed to connect to Metamask:", error);
       }
     };
-
-    // Make sure provider is initialized before calling loadProvider
-    if (provider) {
-      loadProvider();
-    }
-  }, [provider]); // Run effect only when provider changes
+    
+    initProvider();
+  }, []);
 
   return (
-    <>
-      {!modalOpen && (
-        <button className="share" onClick={() => setModalOpen(true)}>
-          Share
-        </button>
-      )}
-      {modalOpen && (
-        <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
-      )}
-
-      <div className="App">
-        <h1 style={{ color: "white" }}>File Sharing Dapp</h1>
-        <div className="bg"></div>
-        <div className="bg bg2"></div>
-        <div className="bg bg3"></div>
-
-        <p style={{ color: "white" }}>
-          ACCOUNT : {account ? account : "Not connected"}
-        </p>
-        <FileUpload
-          account={account}
-          provider={provider}
-          contract={contract}
-        ></FileUpload>
-        <Display contract={contract} account={account}></Display>
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Dashboard
+              account={account}
+              contract={contract}
+              provider={provider}
+            />
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
