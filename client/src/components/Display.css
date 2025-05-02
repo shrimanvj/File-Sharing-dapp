@@ -1,4 +1,30 @@
 /* Modern CSS Reset and Base Styles */
+/* Add to Display.css */
+.display-container {
+  height: 100%;
+}
+
+.file-grid {
+  margin-top: 1.5rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Scrollbar styling */
+.file-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.file-grid::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.file-grid::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -42,7 +68,7 @@ body {
 }
 
 .display-container {
-  min-height: 100vh;
+  min-height: 30vh;
   background: #0f0f0f;
 }
 

@@ -176,5 +176,4 @@ const Display = ({ contract, account }) => {
     </div>
   );
 };
-
 export default Display;

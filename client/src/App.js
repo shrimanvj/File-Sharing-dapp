@@ -9,13 +9,14 @@ import Signup from './components/Auth/Signup';
 import Home from './components/Home';
 import "./App.css";
 
+// Modified Dashboard component in App.js
 function Dashboard({ account, contract, provider }) {
   if (!account) {
     return <Navigate to="/login" />;
   }
 
   return (
-    <div className="App">
+    <div className="app-container">
       <h1>Decentralized File Sharing</h1>
       <div className="bg"></div>
       <div className="bg bg2"></div>
@@ -25,18 +26,25 @@ function Dashboard({ account, contract, provider }) {
         Account: {account ? account : "Not connected"}
       </p>
       
-      <FileUpload
-        account={account}
-        provider={provider}
-        contract={contract}
-      />
-      <Display 
-        contract={contract} 
-        account={account}
-      />
+      <div className="dashboard-layout">
+        <div className="upload-section">
+          <FileUpload
+            account={account}
+            provider={provider}
+            contract={contract}
+          />
+        </div>
+        <div className="display-section">
+          <Display 
+            contract={contract} 
+            account={account}
+          />
+        </div>
+      </div>
     </div>
   );
 }
+
 
 function App() {
   const [account, setAccount] = useState("");
